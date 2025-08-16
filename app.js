@@ -85,6 +85,59 @@ function agregarAmigo() {
     }
 }
 
+// Función que verifica si el nombre contiene solo letras
+function esNombreValido(nombre) {
+    for (let i = 0; i < nombre.length; i++) {
+        let codigo = nombre.charCodeAt(i); // Código ASCII del carácter
+        if (!((codigo >= 65 && codigo <= 90) || (codigo >= 97 && codigo <= 122))) {
+            return false; // No es letra
+        }
+    }
+    return true; // Todos los caracteres son letras
+}
+
+// Función que verifica si el nombre ya fue ingresado
+function nombreExiste(nombre) {
+    for (let i = 0; i < listaDeAmigos.length; i++) {
+        if (listaDeAmigos[i] === nombre) {
+            return true; // Ya existe
+        }
+    }
+    return false; // No está en la lista
+}
+
+// Función para mostrar la lista de amigos en pantalla
+function mostrarLista() {
+    let lista = document.getElementById('listaAmigos');
+    lista.innerHTML = ''; // Limpiamos lista anterior
+
+    // Recorremos cada amigo en la lista
+    for (let i = 0; i < listaDeAmigos.length; i++) {
+        let elemento = document.createElement('li'); // Creamos <li>
+        let nombreCapitalizado = capitalizarNombre(listaDeAmigos[i]); // Capitalizamos
+
+        elemento.textContent = nombreCapitalizado + ' ';
+
+        // Creamos botón "X" para eliminar
+        let botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'X';
+        botonEliminar.style.marginLeft = '10px';
+        botonEliminar.style.width = '45px';
+        botonEliminar.style.backgroundColor = '#DC143C';
+
+        // Función para eliminar al hacer clic en el botón
+        botonEliminar.onclick = (function (indice) {
+            return function () {
+                eliminarAmigo(indice);
+            }
+        })(i);
+
+        // Agregamos el botón al elemento <li>
+        elemento.appendChild(botonEliminar);
+        lista.appendChild(elemento); // Agregamos <li> a la lista
+    }
+}
+
 
 
 
