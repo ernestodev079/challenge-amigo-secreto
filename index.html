@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Amigo Secreto</title>
+</head>
+
+<body>
+    <main class="main-content">
+        <div class="wrapper">
+
+            <header class="header-banner" role="banner">
+                <h1 class="main-title">Amigo Secreto</h1>
+            </header>
+
+            <section class="input-section" aria-labelledby="section-title">
+                <h2 id="section-title" class="section-title">Ingresa el nombre de tus amigos</h2>
+
+                <form class="input-wrapper" onsubmit="event.preventDefault(); agregarAmigo();"
+                    aria-label="Formulario para agregar amigos">
+                    <input type="text" id="amigo" class="input-name" placeholder="Escribe un nombre"
+                        aria-label="Nombre del amigo" />
+                    <button type="submit" class="button-add" aria-label="Agregar amigo a la lista">Añadir</button>
+                </form>
+
+                <ul id="listaAmigos" class="name-list" aria-live="polite" role="list"></ul>
+                <ul id="resultado" class="result-list" aria-live="polite" role="list"></ul>
+
+                <div class="button-container">
+                    <button class="button-draw" id="botonSortear" onclick="sortearAmigo();"
+                        aria-label="Sortear amigo secreto">
+                        <img src="assets/play_circle_outline.png" alt="" aria-hidden="true" />
+                        Sortear Amigo Secreto
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+
+</html>
+
