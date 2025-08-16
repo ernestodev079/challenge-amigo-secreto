@@ -215,13 +215,28 @@ function sortearAmigo() {
     }, 100); // Se ejecuta cada 100 milisegundos
 }
 
+// Función para reiniciar el juego desde cero
+function reiniciarRonda() {
+    listaDeAmigos = [];         // Limpiamos lista
+    sorteoRealizado = false;    // Marcamos que no se ha sorteado
 
+    mostrarLista();             // Limpiamos la lista en pantalla
 
+    // Limpiamos resultado en pantalla
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = '';
 
+    // Reactivamos campos de entrada y botones
+    let input = document.getElementById('amigo');
+    let botonAdd = document.querySelector('.button-add');
+    let botonSortear = document.getElementById('botonSortear');
 
+    input.disabled = false;
+    botonAdd.disabled = false;
 
-
-
+    botonSortear.style.opacity = '0.5';
+    botonSortear.style.cursor = 'not-allowed';
+}
 
 
 
