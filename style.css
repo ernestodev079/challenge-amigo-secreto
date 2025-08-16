@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+:root {
+    --color-primary: #154D71;
+    --color-secondary: #CADCAE;
+    --color-tertiary: #C4C4C4;
+    --color-button: #4A9782;
+    --color-button-hover: #468A9A;
+    --color-text: #444444;
+    --color-white: #FFFFFF;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-secondary);
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+/* Contenedor principal */
+.main-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wrapper que siempre ocupa 100% y se centra */
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Banner */
+.header-banner {
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2.5rem;
+    background-image: url('assets/foto2.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 100%;
+}
+
+.header-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+}
+
+.main-title {
+    z-index: 2;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--color-white);
+    font-weight: 900;
+    text-shadow: 6px 6px 7px rgba(0, 0, 0, 0.7);
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-style: italic;
+}
+
+/* Sección principal */
+.input-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem;
+    width: 100%;
+}
+
+/* Título */
+.section-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Formulario */
+.input-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 1rem;
+}
+
+.input-name {
+    flex: 1;
+    padding: 0.625rem;
+    border: 2px solid #000;
+    border-radius: 25px 0 0 25px;
+    font-size: 1rem;
+}
+
+.button-add {
+    background-color: var(--color-tertiary);
+    color: var(--color-text);
+    border: 2px solid #000;
+    border-left: none;
+    border-radius: 0 25px 25px 0;
+    padding: 0.625rem 1.25rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-add:hover {
+    background-color: #a1a1a1;
+}
+
+/* Lista */
+ul {
+    list-style: none;
+    color: var(--color-text);
+    font-size: 1.125rem;
+    margin-top: 1rem;
+}
+
+.result-list {
+    color: var(--color-button);
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.375rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Lista de nombres */
+.name-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.375rem 0.5rem;
+}
+
+.name-list button {
+    background-color: var(--color-button);
+    color: var(--color-white);
+    border: none;
+    border-radius: 50%;
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.name-list button:hover {
+    background-color: var(--color-button-hover);
+}
+
+/* Contenedor del botón sortear */
+.button-container {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 1.5rem;
+}
+
+.button-draw {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-button);
+    color: var(--color-white);
+    font-size: 1rem;
+    border: 2px solid #000;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+
+.button-draw img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+}
+
+.button-draw:hover {
+    background-color: var(--color-button-hover);
+}
+
+/* Media queries */
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+    }
+
+    .section-title {
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
+    }
+
+    .button-draw {
+        font-size: 0.9rem;
+        padding: 0.625rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .input-wrapper {
+        flex-direction: column;
+        max-width: 90%;
+    }
+
+    .input-name {
+        border-radius: 25px;
+        margin-bottom: 0.5rem;
+    }
+
+    .button-add {
+        width: 100%;
+        border-radius: 25px;
+        padding: 0.625rem;
+        border-left: 2px solid #000;
+    }
+
+    .button-container {
+        max-width: 90%;
+    }
+
+    .button-draw {
+        font-size: 0.95rem;
+    }
+}
