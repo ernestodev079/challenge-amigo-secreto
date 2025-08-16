@@ -138,7 +138,82 @@ function mostrarLista() {
     }
 }
 
+// Función para eliminar un nombre por índice
+function eliminarAmigo(indice) {
+    listaDeAmigos.splice(indice, 1); // Quitamos el nombre
 
+    // Si hay menos de 7 nombres, reactivamos input y botones
+    if (listaDeAmigos.length < 7) {
+        document.getElementById('amigo').disabled = false;
+        document.querySelector('.button-add').disabled = false;
+
+        let botonSortear = document.getElementById('botonSortear');
+        botonSortear.style.opacity = '0.5';
+        botonSortear.style.cursor = 'not-allowed';
+    }
+
+    mostrarLista(); // Actualizamos la lista
+}
+
+// Función que capitaliza el primer carácter del nombre
+function capitalizarNombre(nombre) {
+    if (nombre.length === 0) return '';
+    return nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase();
+}
+
+// Función para realizar el sorteo del amigo secreto
+function sortearAmigo() {
+    // Verificamos si hay menos de 7 nombres antes de sortear
+    if (listaDeAmigos.length < 7) {
+        alert(`Debes ingresar 7 nombres antes de realizar el sorteo. Actualmente has ingresado ${listaDeAmigos.length}.`);
+        return;
+    }
+
+    // Si ya se hizo, no repetir
+    if (sorteoRealizado) {
+        alert('El sorteo ya se realizó. La nueva ronda se reiniciara en breve :)');
+        return;
+    }
+
+    sorteoRealizado = true; // Marcamos sorteo como realizado
+
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = ''; // Limpiamos resultados previos
+
+    // Creamos elemento para mostrar el resultado
+    let elementoResultado = document.createElement('li');
+    elementoResultado.style.color = '#171717'; // Color de letras durante animación
+    resultado.appendChild(elementoResultado);
+
+    let contador = 0;
+    let maxIntentos = 20; // Cuántas veces cambiará el nombre animado
+
+    // Efecto de "ruleta" cambiando nombres rápido
+    let intervalo = setInterval(function () {
+        let indiceAleatorio = Math.floor(Math.random() * listaDeAmigos.length);
+        let nombreTemporal = listaDeAmigos[indiceAleatorio];
+
+        // Mostramos el nombre temporal durante animación
+        elementoResultado.textContent = `🎁 Sorteando... ${capitalizarNombre(nombreTemporal)}`;
+        contador++;
+
+        if (contador >= maxIntentos) {
+            clearInterval(intervalo); // Detenemos la animación
+
+            // Elegimos el nombre final
+            let indiceFinal = Math.floor(Math.random() * listaDeAmigos.length);
+            let nombreFinal = listaDeAmigos[indiceFinal];
+
+            // Mostramos el resultado
+            elementoResultado.textContent = `🎉 El amigo secreto es: ${capitalizarNombre(nombreFinal)}`;
+
+            // Esperamos 5 segundos y reiniciamos
+            setTimeout(() => {
+                reiniciarRonda();
+            }, 5000);
+        }
+    }, 100); // Se ejecuta cada 100 milisegundos
+}
 
 
 
